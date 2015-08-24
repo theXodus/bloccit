@@ -15,6 +15,9 @@ posts = Post.all
     )
 end
 
+
+Post.where(title: "Unique Post", body: "This is a unique post.").first_or_create
+Comment.where(post: "Unique Post", body: "This is a unique comment.").first_or_create
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
