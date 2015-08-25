@@ -5,12 +5,9 @@ module RandomData
     rand(4..6).times do
       sentences << random_sentence
     end
-    self.methods.sort
+    sentences.join(" ")
   end
   
-  
-
-
   def random_sentence
     strings = []
     rand(3..8).times do
