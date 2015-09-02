@@ -21,8 +21,17 @@ end
     body: RandomData.random_paragraph
     )
 end
+questions = Question.all
+
+100.times do
+  Answer.create!(
+    question: questions.sample,
+    body: RandomData.random_paragraph
+    )
+end
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{Question.count} questions created"
+puts "#{Answer.count} answers created"
