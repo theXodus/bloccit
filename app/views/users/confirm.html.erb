@@ -5,5 +5,9 @@
 <p>Email: <%= "#{@user.email}" %> </p>
 <p>Name: <%= "#{@user.name}" %> </p>
 
-<button type="button" class="btn btn-success">Yes</button>
-<button type="button" class="btn btn-danger">No</button>
+<div style="float:left;">
+<%= button_to "Yes", {:controller => "users", :action => "create", :params => params}, class: 'btn btn-success' %>
+</div>
+<div style="float:left;">
+<%= button_to 'No', request.referer, method: :get,  class: 'btn btn-danger' %>
+</div>
