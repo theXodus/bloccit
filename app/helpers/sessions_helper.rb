@@ -4,7 +4,7 @@ module SessionsHelper
   end
   
   def destroy_session(user)
-    session[user_id] = nil
+    session[:user_id] = nil
   end
   
   def current_user
