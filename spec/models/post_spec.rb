@@ -7,6 +7,8 @@ let(:topic) { Topic.create!(name: RandomData.random_sentence, description: Rando
 let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
 let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
 
+let(:second_post) { Post.new(title: RandomData.random_sentence, body: RandomData.random_paragraph, topic: topic, user: user) }
+
 it { should have_many(:labelings) }
 it { should have_many(:labels).through(:labelings) }
 
@@ -75,6 +77,13 @@ describe "voting" do
         old_rank = post.rank
         post.votes.create!(value: -1)
         expect(post.rank).to eq (old_rank - 1)
+      end
+    end
+    
+    describe "after_create" do
+      it "sends an email to the owner of the post" do
+        expect(FavoriteMailer).to receive(:new_post).with(second_post).and_return(double(deliver_now: true))
+        second_post.save
       end
     end
   end
