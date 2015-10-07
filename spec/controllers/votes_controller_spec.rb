@@ -18,11 +18,11 @@ RSpec.describe VotesController, type: :controller do
     end
     
     describe "POST down_vote" do
-       it "redirects the user to the sign in view" do
-         delete :down_vote, post_id: user_post.id
-         expect(response).to redirect_to(new_session_path)
-       end
-     end
+      it "redirects the user to the sign in view" do
+        delete :down_vote, post_id: user_post.id
+        expect(response).to redirect_to(new_session_path)
+      end
+    end
   end
 
   context "signed in user" do
