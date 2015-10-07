@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe LabelsController, type: :controller do
+  let(:my_label) { create(:label) }
 
   describe "GET #show" do
-    let(:my_label) { Label.create!(name: "L1") }
     
     it "returns http success" do
       get :show, { id: my_label.id }
