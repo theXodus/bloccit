@@ -6,6 +6,11 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
+            <% if topic.public == false %> # I'm sure there is a way to do this with privately_viewable but I couldn't get it to work.
+            <button class='btn-xs btn-primary'>
+              Private
+            </button>
+            <% end %>
             <%= link_to topic.name, topic %>
           </h4>
           <small>
